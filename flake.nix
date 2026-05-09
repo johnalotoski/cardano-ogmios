@@ -3,7 +3,10 @@
 
   inputs = {
     ogmios = {
-      url = "path:/home/jlotoski/ai/share/CardanoSolutions/ogmios";
+      type = "git";
+      url = "https://github.com/johnalotoski/ogmios.git";
+      ref = "feature/node-11.0";
+      submodules = true;
       flake = false;
     };
     haskellNix = {
@@ -75,10 +78,33 @@
 
           apps = lib.mapAttrs (n: p: { type = "app"; program = p.exePath or "${p}/bin/${p.name or n}"; }) packages;
 
+          checks = {
+            # Build the ogmios test binary as a compilation check.
+            # Full test execution requires a writable source tree (for golden
+            # file output) and cross-boundary symlink resolution (ogmios.json),
+            # which aren't available in the nix build sandbox.
+            #
+            # To run the full test suite, use the devx shell from the ogmios
+            # repo's server/ directory (with submodules initialized):
+            #
+            #   cd server
+            #   nix develop "github:CardanoSolutions/devx#ghc96-static-minimal-iog" \
+            #     --no-write-lock-file -c bash -c '
+            #       export CURL_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
+            #       export SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
+            #       cat /nix/store/vd865r55pdbndjwh994h90m35qq77x44-cabal.project.local \
+            #         >> cabal.project.local 2>/dev/null
+            #       cabal update
+            #       cabal test ogmios:test:unit --test-show-details=direct
+            #     '
+            #
+            ogmios-unit-tests = project.hsPkgs.ogmios.components.tests.unit;
+          };
+
         in
         {
 
-          inherit packages apps;
+          inherit packages apps checks;
 
           legacyPackages = project;
 

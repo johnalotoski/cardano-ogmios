@@ -657,14 +657,20 @@
     "ogmios": {
       "flake": false,
       "locked": {
-        "lastModified": 1778298481,
-        "narHash": "sha256-WRBpyRtI0e6acG+UmeAqIidqm6DqUJ0k7Qta6pZ0h6Y=",
-        "path": "/home/jlotoski/ai/share/CardanoSolutions/ogmios",
-        "type": "path"
+        "lastModified": 1778350919,
+        "narHash": "sha256-sB7O2mqicnxiEtaAe90KJCfIgLITsW3vDn2QwpdHs0Y=",
+        "ref": "feature/node-11.0",
+        "rev": "412b4a2e0c90a68f5c9aba585fd6095f3eb9aced",
+        "revCount": 1762,
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/johnalotoski/ogmios.git"
       },
       "original": {
-        "path": "/home/jlotoski/ai/share/CardanoSolutions/ogmios",
-        "type": "path"
+        "ref": "feature/node-11.0",
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/johnalotoski/ogmios.git"
       }
     },
     "old-ghc-nix": {
