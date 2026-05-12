@@ -657,11 +657,11 @@
     "ogmios": {
       "flake": false,
       "locked": {
-        "lastModified": 1778350919,
-        "narHash": "sha256-sB7O2mqicnxiEtaAe90KJCfIgLITsW3vDn2QwpdHs0Y=",
+        "lastModified": 1779169030,
+        "narHash": "sha256-byDJZyXHgdGzChue9kmekkGOkcaFVEH2IouYXpdoCis=",
         "ref": "feature/node-11.0",
-        "rev": "412b4a2e0c90a68f5c9aba585fd6095f3eb9aced",
-        "revCount": 1762,
+        "rev": "a1d1b46d6a626cb2ad03985808c3101e793f51e7",
+        "revCount": 1783,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/johnalotoski/ogmios.git"
